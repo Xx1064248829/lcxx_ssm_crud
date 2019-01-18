@@ -1,9 +1,9 @@
 package crud.test;
 
 
-import bean.Employee;
-import dao.DepartmentMapper;
-import dao.EmployeeMapper;
+import crud.bean.Employee;
+import crud.dao.DepartmentMapper;
+import crud.dao.EmployeeMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -25,7 +25,7 @@
 
         <!-- 指定javaBean生成的位置 -->
         <javaModelGenerator
-                targetPackage="bean"
+                targetPackage="crud.bean"
                 targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
@@ -40,7 +40,7 @@
 
         <!-- 指定dao接口生成的位置，mapper接口 -->
         <javaClientGenerator type="XMLMAPPER"
-                targetPackage="dao"
+                targetPackage="crud.dao"
                 targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
