@@ -7,8 +7,14 @@
             <setting name="mapUnderscoreToCamelCase" value="true"/>
         </settings>
         <typeAliases>
-            <package name="crud.bean"/>
+            <package name="java.bean"/>
         </typeAliases>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!--pageInfo合理化分页参数-->
+            <property name="reasonable" value="true"/>
+        </plugin>
+    </plugins>
 
 
 

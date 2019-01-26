@@ -45,8 +45,7 @@ public class MapperTest {
         ApplicationContext ioc= new ClassPathXmlApplicationContext("applicationContext.xml");
         //2.从容器中获取Mapper
         ioc.getBean(DepartmentMapper.class);*/
-        System.out.println(departmentMapper);
-
+        //System.out.println(departmentMapper);
         //1.插入几个部门
         //departmentMapper.insertSelective(new Department(null,"开发部"));
         //departmentMapper.insertSelective(new Department(null,"测试部"));
@@ -57,16 +56,11 @@ public class MapperTest {
 
         //3.批量插入多个员工；使用可执行批量操作的sqlSession
         EmployeeMapper mapper=sqlSession.getMapper(EmployeeMapper.class);
-        for(int i=0;i<10;i++){
+        for(int i=0;i<100;i++){
             String uid=UUID.randomUUID().toString().substring(0,5)+i;
             mapper.insertSelective(new Employee(null,uid,"M",uid+"@ecut.com",1));
         }
         System.out.println("批量完成！");
-
-
-
-
-
 
     }
 
