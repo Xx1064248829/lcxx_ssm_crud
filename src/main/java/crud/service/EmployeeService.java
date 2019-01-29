@@ -1,14 +1,13 @@
-package service;
+package crud.service;
 
-import bean.Employee;
-import bean.EmployeeExample;
-import dao.EmployeeMapper;
+import crud.bean.Employee;
+import crud.bean.EmployeeExample;
+import crud.dao.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.management.openmbean.CompositeData;
 import java.util.List;
 
 @Service
@@ -17,7 +16,8 @@ public class EmployeeService {
     @Autowired
     EmployeeMapper employeeMapper;
     public List<Employee> getAll() {
-        return employeeMapper.selectByExampleWithDept(null);
+//        return employeeMapper.selectByExampleWithDept(null);
+        return null;
     }
 
     public void saveEmp(Employee employee) {

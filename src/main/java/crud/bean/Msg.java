@@ -1,4 +1,4 @@
-package bean;
+package crud.bean;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,8 +1,7 @@
-package test;
+package crud.test;
 
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import bean.Employee;
+import crud.bean.Employee;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

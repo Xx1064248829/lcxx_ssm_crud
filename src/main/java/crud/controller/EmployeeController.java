@@ -1,13 +1,13 @@
-package controller;
+package crud.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import bean.Employee;
-import bean.Msg;
-import org.springframework.ui.Model;
-import service.EmployeeService;
+import crud.bean.Employee;
+import crud.bean.Msg;
+import crud.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;

@@ -1,11 +1,11 @@
-package service;
+package crud.service;
 
-import java.util.List;
-
-import bean.Department;
-import dao.DepartmentMapper;
+import crud.bean.Department;
+import crud.dao.DepartmentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 
