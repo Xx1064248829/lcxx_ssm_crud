@@ -5,8 +5,6 @@ import crud.bean.EmployeeExample;
 import crud.dao.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -15,27 +13,18 @@ public class EmployeeService {
 
     @Autowired
     EmployeeMapper employeeMapper;
+
+
+    /**
+     * 查询所有员工
+     * @return
+     */
     public List<Employee> getAll() {
-//        return employeeMapper.selectByExampleWithDept(null);
-        return null;
+        return employeeMapper.selectByExampleWithDept(null);
     }
 
     public void saveEmp(Employee employee) {
         employeeMapper.insertSelective(employee);
-    }
-
-    @Autowired
-    EmployeeService employeeService;
-    /**
-     * 查询员工数据
-     * @return
-     */
-    @RequestMapping("/emps")
-    public String getEmps(@RequestParam(value="pn",defaultValue = "1")Integer pn){
-        //这不是一个分页查询；
-        //引入PageHelper分页插件
-        List<Employee> emps = employeeService.getAll();
-        return "list";
     }
 
     /**

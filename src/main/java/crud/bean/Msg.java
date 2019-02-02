@@ -3,6 +3,7 @@ package crud.bean;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
  * 通用提示的类
  */

@@ -7,7 +7,6 @@ import crud.bean.Msg;
 import crud.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -32,49 +31,6 @@ public class EmployeeController {
         employeeService.updateEmp(employee);
         return Msg.success();
     }
-
-
-    /**
-     * 需要导入json包
-     *
-     * @param pn
-     * @return
-     */
-    @RequestMapping("/emps")
-    @ResponseBody
-    public Msg getEmpsWithJson(
-            @RequestParam(value = "pn", defaultValue = "1") Integer pn) {
-        //这不是一个分页查询
-        //引入PageHelper分页插件
-        //在查询之前只需要调用，传入页码，以及每页的大小
-        PageHelper.startPage(pn, 5);
-        //startPage后面紧跟的这个查询就是一个分页查询
-        List<Employee> emps = employeeService.getAll();
-        //使用PageInfo查询包装后的结果，只需要把PageInfo交给页面就行
-        //封装了详细的分页信息，包括有我们查询出来的数据,传入连续显示的页数
-        PageInfo page = new PageInfo(emps, 5);
-        return Msg.success().add("pageInfo", page);
-    }
-
-    /**
-     * 查询员工数据（分页查询）
-     * @return
-     */
-    //@RequestMapping("/emps")
-    /*public String getEmps(@RequestParam(value="pn",defaultValue="1")Integer pn, Model model){
-        //引入PageHelper分页插件
-        //在查询之前只需要调用，传入页码，以及每页的大小
-        PageHelper.startPage(pn,5);
-        //startPage后面紧跟的这个查询就是一个分页查询
-        List<Employee> emps = employeeService.getAll();
-        //使用PageInfo查询包装后的结果，只需要把PageInfo交给页面就行
-        //封装了详细的分页信息，包括有我们查询出来的数据,传入连续显示的页数
-        PageInfo page = new PageInfo(emps,5);
-        //这里面把page给pageInfo（addAttribute里的pageInfo，这个单词换什么都行，前台页面通过${}方式呈现，和其他无关），在前端页面展示
-        model.addAttribute("pageInfo",page);
-        return "list";
-    }*/
-
 
     /**
      * 按照员工id查询员工
@@ -126,7 +82,7 @@ public class EmployeeController {
     @RequestMapping(value = "/emp", method = RequestMethod.POST)
     @ResponseBody
     //@Valid和@Pattern或者@NotBlank等等使用（具体看bean中的注释），校验功能，
-    // 获取参数，校验的结果放在BindingResult中
+    // @Valid获取参数，校验的结果放在BindingResult中
     //继承了error接口，里面有方法为hasErrors,boolean类型
     public Msg saveEmp(@Valid Employee employee, BindingResult result) {
         if (result.hasErrors()) {
@@ -145,5 +101,26 @@ public class EmployeeController {
         }
     }
 
+    /**
+     * 需要导入json包
+     *
+     * @param pn
+     * @return
+     */
+    @RequestMapping("/emps")
+    @ResponseBody
+    public Msg getEmpsWithJson(
+            @RequestParam(value = "pn", defaultValue = "1") Integer pn) {
+        //这不是一个分页查询
+        //引入PageHelper分页插件
+        //在查询之前只需要调用，传入页码，以及每页的大小
+        PageHelper.startPage(pn, 5);
+        //startPage后面紧跟的这个查询就是一个分页查询
+        List<Employee> emps = employeeService.getAll();
+        //使用PageInfo查询包装后的结果，只需要把PageInfo交给页面就行
+        //封装了详细的分页信息，包括有我们查询出来的数据,传入连续显示的页数
+        PageInfo page = new PageInfo(emps, 5);
+        return Msg.success().add("pageInfo", page);
+    }
 
 }
