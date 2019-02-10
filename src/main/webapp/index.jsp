@@ -147,7 +147,8 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <table class="table table-hover">
+            <table class="table table-hover" id="emp_table">
+                <thead>
                 <tr>
                     <th>#Id(员工号码)</th>
                     <th>EmpName（员工姓名）</th>
@@ -156,65 +157,19 @@
                     <th>DeptName（员工所在部门）</th>
                     <th>        </th>
                 </tr>
-                <c:forEach items="${pageInfo.list}" var="emp">
-                    <tr>
-                        <th>${emp.empId}</th>
-                        <th>${emp.empName}</th>
-                        <th>${emp.gender=="M"?"男":"女"}</th>
-                        <th>${emp.email}</th>
-                        <th>${emp.department.deptName}</th>
-                        <th>
-                            <button class="btn btn-primary btn-xs">
-                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                编辑
-                            </button>
-                            <button class="btn btn-danger btn-xs">
-                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                删除
-                            </button>
-                        </th>
-                    </tr>
-                </c:forEach>
+                </thead>
+                <tbody>
+                </tbody>
             </table>
         </div>
     </div>
     <!--显示分页信息-->
     <div class="row">
         <!--分页文字信息-->
-        <div class="col-md-6">
-            当前${pageInfo.pageNum}页，总${pageInfo.pages}页,总${pageInfo.total}条记录
+        <div class="col-md-6" id="page_info_area">
         </div>
         <!--分页条信息-->
-        <div class="col-md-6">
-            <nav aria-label="Page navigation">
-                <ul class="pagination">
-                    <li><a href="${APP_PATH}/emps?pn=1">首页</a></li>
-                    <c:if test="${pageInfo.hasPreviousPage}">
-                        <li>
-                            <a href="${APP_PATH}/emps?pn=${pageInfo.pageNum-1}" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                    </c:if>
-                    <c:forEach items="${pageInfo.navigatepageNums}" var="pageNums">
-                        <c:if test="${pageNums == pageInfo.pageNum}">
-                            <li class="active"><a href="#">${pageNums}</a></li>
-                        </c:if>
-                        <c:if test="${pageNums != pageInfo.pageNum}">
-                            <li><a href="${APP_PATH}/emps?pn=${pageNums}">${pageNums}</a> </li>
-                        </c:if>
-                    </c:forEach>
-
-                    <c:if test="${pageInfo.hasNextPage}">
-                        <li>
-                            <a href="${APP_PATH}/emps?pn=${pageInfo.pageNum+1}" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </c:if>
-                    <li><a href="${APP_PATH}/emps?pn=${pageInfo.pages}">尾页</a></li>
-                </ul>
-            </nav>
+        <div class="col-md-6" id="page_nav_area">
         </div>
     </div>
 </div>
